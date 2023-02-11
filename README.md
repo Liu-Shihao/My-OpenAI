@@ -6,7 +6,8 @@
 配置`open.ai.apiKey`和`open.ai.organization`
 
 
-## API List
+
+## OpenAI API List
 1. POST   https://api.openai.com/v1/completions
 2. POST   https://api.openai.com/v1/images/generations
 

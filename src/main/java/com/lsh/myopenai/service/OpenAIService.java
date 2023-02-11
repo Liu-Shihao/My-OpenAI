@@ -2,6 +2,7 @@ package com.lsh.myopenai.service;
 
 import com.lsh.myopenai.model.request.CompletionsRequestModel;
 import com.lsh.myopenai.model.request.ImagesRequestModel;
+import com.lsh.myopenai.model.response.ResponseModel;
 
 /**
  * @Author: LiuShihao
@@ -10,7 +11,7 @@ import com.lsh.myopenai.model.request.ImagesRequestModel;
  */
 
 public interface OpenAIService {
-    void completionApi(CompletionsRequestModel requestModel);
+    ResponseModel completionApi(CompletionsRequestModel requestModel);
 
-    void imagesApi(ImagesRequestModel requestModel);
+    ResponseModel imagesApi(ImagesRequestModel requestModel);
 }

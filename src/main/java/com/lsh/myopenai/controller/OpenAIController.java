@@ -1,5 +1,6 @@
 package com.lsh.myopenai.controller;
 
+import com.lsh.myopenai.model.ResultBody;
 import com.lsh.myopenai.model.request.CompletionsRequestModel;
 import com.lsh.myopenai.model.request.ImagesRequestModel;
 import com.lsh.myopenai.service.OpenAIService;
@@ -24,8 +25,9 @@ public class OpenAIController {
 
 
     @PostMapping("/text")
-    public void CompletionApi(@RequestBody CompletionsRequestModel requestModel){
-        openAIService.completionApi(requestModel);
+    public ResultBody CompletionApi(@RequestBody CompletionsRequestModel requestModel){
+        return ResultBody.SUCCESS(openAIService.completionApi(requestModel));
+
 
     }
     @PostMapping("/img")
