@@ -1,0 +1,12 @@
+server:
+  port:
+spring:
+  application:
+    name: My-OpenAI
+open:
+  ai:
+    api:
+      completions: https://api.openai.com/v1/completions
+      images: https://api.openai.com/v1/images/generations
+    apiKey: YOUR_API_KEY
+    organization: YOUR_ORGANIZATION
