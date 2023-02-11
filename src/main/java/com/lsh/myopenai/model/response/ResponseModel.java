@@ -16,7 +16,7 @@ public class ResponseModel {
     private String object;
     private String created;
     private String model;
-    private ChoicesModel choices;
+    private List<ChoicesModel> choices;
     private UsageModel usage;
-    private DateModel data;
+    private List<DateModel> data;
 }

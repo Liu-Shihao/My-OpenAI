@@ -13,8 +13,8 @@ public class BaseRequestModel {
     private String prompt;
 
     // 返回内容的条数/生成图片的数量 Must be between 1 and 10. 默认值1
-    private int n;
+    private int n = 1;
 
-    private String user;
+    private String user = "";
 
 }

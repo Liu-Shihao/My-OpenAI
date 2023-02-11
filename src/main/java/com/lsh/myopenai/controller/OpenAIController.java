@@ -26,13 +26,14 @@ public class OpenAIController {
 
     @PostMapping("/text")
     public ResultBody CompletionApi(@RequestBody CompletionsRequestModel requestModel){
-        return ResultBody.SUCCESS(openAIService.completionApi(requestModel));
+        return ResultBody.SUCCESS(openAIService.completionApi(requestModel).getChoices().get(0).getText());
 
 
     }
     @PostMapping("/img")
-    public void ImagesApi(@RequestBody ImagesRequestModel requestModel){
-        openAIService.imagesApi(requestModel);
+    public ResultBody ImagesApi(@RequestBody ImagesRequestModel requestModel){
+        return ResultBody.SUCCESS(openAIService.imagesApi(requestModel).getData().get(0).getUrl());
+
 
     }
 }

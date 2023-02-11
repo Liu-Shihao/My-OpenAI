@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,7 +18,7 @@ import java.util.Map;
 public class CompletionsRequestModel extends BaseRequestModel {
 
     // 必填，指定功能模型
-    private String model;
+    private String model = "text-davinci-003";
 
     private String suffix;
 
@@ -25,7 +26,7 @@ public class CompletionsRequestModel extends BaseRequestModel {
     private int max_tokens = 2048;
 
     //采样精度 默认值为1 取值范围为0~2
-    private int temperature;
+    private int temperature = 1;
 
     //默认值1，采样精度的另一种表示方式,不要和temperature同时使用
     private int top_p ;
@@ -45,9 +46,9 @@ public class CompletionsRequestModel extends BaseRequestModel {
 
     private int frequency_penalty;
 
-    private int best_of;
+    private int best_of = 1;
 
-    private Map logit_bias;
+    private Map logit_bias = new HashMap();
 
 
 }

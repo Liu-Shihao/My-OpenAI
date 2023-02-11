@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class ImagesRequestModel extends BaseRequestModel {
 
-    private String size;
+    private String size = ImagesSizeEnum.SIZE_1024x1024.getValue();
 
     private String response_format = "url";
 

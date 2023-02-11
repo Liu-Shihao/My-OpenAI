@@ -43,7 +43,6 @@ public class OpenAIServiceImpl implements OpenAIService{
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization","Bearer "+apiKey);
         headers.add("OpenAI-Organization",organization);
-        requestModel.setModel("text-davinci-003");
         requestModel.setMax_tokens(7);
         requestModel.setTemperature(0);
         HttpEntity<CompletionsRequestModel> requestModelHttpEntity = new HttpEntity<>(requestModel, headers);
@@ -59,8 +58,6 @@ public class OpenAIServiceImpl implements OpenAIService{
         headers.add("Authorization","Bearer "+apiKey);
         headers.add("OpenAI-Organization",organization);
         requestModel.setPrompt(requestModel.getPrompt());
-        requestModel.setN(1);
-        requestModel.setSize(ImagesSizeEnum.SIZE_1024x1024.getValue());
         HttpEntity<ImagesRequestModel> requestModelHttpEntity = new HttpEntity<>(requestModel, headers);
         ResponseEntity<ResponseModel> responseEntity = restTemplate.exchange(imagesUrl, HttpMethod.POST, requestModelHttpEntity, ResponseModel.class);
         log.info(String.valueOf(responseEntity.getBody()));

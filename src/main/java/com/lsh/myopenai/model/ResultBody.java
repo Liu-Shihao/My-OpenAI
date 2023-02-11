@@ -14,12 +14,12 @@ import lombok.Data;
 public class ResultBody {
     private String code;
     private String msg;
-    private ResponseModel data;
+    private String data;
 
-    public static ResultBody SUCCESS(ResponseModel data){
+    public static ResultBody SUCCESS(String data){
         return new ResultBody("200","success",data);
     }
-    public static ResultBody FAIL(ResponseModel data){
+    public static ResultBody FAIL(String data){
         return new ResultBody("500","fail",data);
     }
 

@@ -11,7 +11,7 @@ import lombok.Data;
 public class ChoicesModel {
     private String text;
     private int index;
-    private String logprobs;
+    private Object logprobs;
     private String finish_reason;
 
 }
