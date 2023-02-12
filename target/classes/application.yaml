@@ -1,12 +1,19 @@
 server:
-  port:
+  port: 8080
 spring:
   application:
     name: My-OpenAI
+  thymeleaf:
+    prefix: classpath:/templates/
+    encoding: UTF-8
+    cache: false
+    suffix: .html
+    servlet:
+      content-type: text/html
 open:
   ai:
     api:
       completions: https://api.openai.com/v1/completions
       images: https://api.openai.com/v1/images/generations
-    apiKey: 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
+    apiKey: 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
     organization: org-zCzGmxd10qZ28QXAwmxnYKhY

@@ -17,7 +17,7 @@ public class OpenAIApplication {
     public static void main(String[] args) {
         SpringApplication.run(OpenAIApplication.class,args);
         log.info("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ");
-        log.info("* * * * * * * * * * * * * * * My OpenAI Is Start Up!* * * * * * * * * * * * * * * ");
+        log.info("* * * * * * * * * * * * * * * My OpenAI Is Start Up!* * * * * * * * * * * * ");
         log.info("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ");
     }
 

@@ -40,6 +40,7 @@ public class OpenAIServiceImpl implements OpenAIService{
 
     @Override
     public ResponseModel completionApi(CompletionsRequestModel requestModel) {
+        log.info("completionApi Param:{}",requestModel);
         HttpEntity<CompletionsRequestModel> requestModelHttpEntity = new HttpEntity<>(requestModel, generateHeader());
         ResponseEntity<ResponseModel> responseEntity = restTemplate.exchange(completionsUrl, HttpMethod.POST, requestModelHttpEntity, ResponseModel.class);
         log.info(String.valueOf(responseEntity.getBody()));

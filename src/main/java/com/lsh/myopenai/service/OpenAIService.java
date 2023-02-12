@@ -11,6 +11,7 @@ import com.lsh.myopenai.model.response.ResponseModel;
  */
 
 public interface OpenAIService {
+
     ResponseModel completionApi(CompletionsRequestModel requestModel);
 
     ResponseModel imagesApi(ImagesRequestModel requestModel);

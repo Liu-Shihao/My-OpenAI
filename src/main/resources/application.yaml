@@ -1,8 +1,15 @@
 server:
-  port:
+  port: 8080
 spring:
   application:
     name: My-OpenAI
+  thymeleaf:
+    prefix: classpath:/templates/
+    encoding: UTF-8
+    cache: false
+    suffix: .html
+    servlet:
+      content-type: text/html
 open:
   ai:
     api:

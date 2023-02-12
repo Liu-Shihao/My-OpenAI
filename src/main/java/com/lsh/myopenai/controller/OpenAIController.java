@@ -4,34 +4,52 @@ import com.lsh.myopenai.model.ResultBody;
 import com.lsh.myopenai.model.request.CompletionsRequestModel;
 import com.lsh.myopenai.model.request.ImagesRequestModel;
 import com.lsh.myopenai.service.OpenAIService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author: LiuShihao
  * @Date: 2023/2/12 02:22
  * @Desc:
  */
-@RestController
-@RequestMapping("/openai")
+@Slf4j
+@Controller
 public class OpenAIController {
 
 
     @Autowired
     OpenAIService openAIService;
 
+    /**
+     * Model model,
+     * @param request
+     * @return
+     */
+    @GetMapping("/index")
+    public String index(HttpServletRequest request){
+        log.info("- - - - - - - - - - - - - - - - - - - - - - - - -");
+        log.info("- - - - - - - Welcome {} - - - - - - - -",request.getRemoteAddr());
+        log.info("- - - - - - - - - - - - - - - - - - - - - - - - -");
+        return "index";
+    }
 
-    @PostMapping("/text")
-    public ResultBody CompletionApi(@RequestBody CompletionsRequestModel requestModel){
-        return ResultBody.SUCCESS(openAIService.completionApi(requestModel).getChoices().get(0).getText());
+
+    @PostMapping("/openai/text")
+    public String CompletionApi( CompletionsRequestModel requestModel,Model model){
+        model.addAttribute("request",requestModel.getPrompt());
+        model.addAttribute("response",openAIService.completionApi(requestModel).getChoices().get(0).getText());
+        return "index";
 
 
     }
-    @PostMapping("/img")
-    public ResultBody ImagesApi(@RequestBody ImagesRequestModel requestModel){
-        return ResultBody.SUCCESS(openAIService.imagesApi(requestModel).getData().get(0).getUrl());
+    @PostMapping("/openai/img")
+    public String ImagesApi(ImagesRequestModel requestModel){
+        openAIService.imagesApi(requestModel).getData().get(0).getUrl();
+        return "index";
     }
 }
