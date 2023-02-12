@@ -40,12 +40,7 @@ public class OpenAIServiceImpl implements OpenAIService{
 
     @Override
     public ResponseModel completionApi(CompletionsRequestModel requestModel) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization","Bearer "+apiKey);
-        headers.add("OpenAI-Organization",organization);
-        requestModel.setMax_tokens(7);
-        requestModel.setTemperature(0);
-        HttpEntity<CompletionsRequestModel> requestModelHttpEntity = new HttpEntity<>(requestModel, headers);
+        HttpEntity<CompletionsRequestModel> requestModelHttpEntity = new HttpEntity<>(requestModel, generateHeader());
         ResponseEntity<ResponseModel> responseEntity = restTemplate.exchange(completionsUrl, HttpMethod.POST, requestModelHttpEntity, ResponseModel.class);
         log.info(String.valueOf(responseEntity.getBody()));
         return responseEntity.getBody();
@@ -54,13 +49,20 @@ public class OpenAIServiceImpl implements OpenAIService{
 
     @Override
     public ResponseModel imagesApi(ImagesRequestModel requestModel) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization","Bearer "+apiKey);
-        headers.add("OpenAI-Organization",organization);
-        requestModel.setPrompt(requestModel.getPrompt());
-        HttpEntity<ImagesRequestModel> requestModelHttpEntity = new HttpEntity<>(requestModel, headers);
+        log.info("imagesApi Param:{}",requestModel);
+        HttpEntity<ImagesRequestModel> requestModelHttpEntity = new HttpEntity<>(requestModel, generateHeader());
         ResponseEntity<ResponseModel> responseEntity = restTemplate.exchange(imagesUrl, HttpMethod.POST, requestModelHttpEntity, ResponseModel.class);
         log.info(String.valueOf(responseEntity.getBody()));
         return responseEntity.getBody();
+    }
+
+
+    public HttpHeaders generateHeader(){
+//        log.info("--- apiKey:{}",apiKey);
+//        log.info("--- organization:{}",organization);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization","Bearer "+apiKey);
+        headers.add("OpenAI-Organization",organization);
+        return headers;
     }
 }

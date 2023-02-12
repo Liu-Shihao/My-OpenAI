@@ -33,7 +33,5 @@ public class OpenAIController {
     @PostMapping("/img")
     public ResultBody ImagesApi(@RequestBody ImagesRequestModel requestModel){
         return ResultBody.SUCCESS(openAIService.imagesApi(requestModel).getData().get(0).getUrl());
-
-
     }
 }

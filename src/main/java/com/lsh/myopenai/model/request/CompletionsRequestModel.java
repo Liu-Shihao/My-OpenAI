@@ -13,12 +13,18 @@ import java.util.Map;
  * @Desc:
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class CompletionsRequestModel extends BaseRequestModel {
+public class CompletionsRequestModel {
 
     // 必填，指定功能模型
     private String model = "text-davinci-003";
+
+    // 提示语  string or array
+    public String prompt;
+
+    // 返回内容的条数/生成图片的数量 Must be between 1 and 10. 默认值1
+    public int n = 1;
+
+    public String user = "";
 
     private String suffix;
 
@@ -26,10 +32,10 @@ public class CompletionsRequestModel extends BaseRequestModel {
     private int max_tokens = 2048;
 
     //采样精度 默认值为1 取值范围为0~2
-    private int temperature = 1;
+    private int temperature = 0;
 
     //默认值1，采样精度的另一种表示方式,不要和temperature同时使用
-    private int top_p ;
+//    private int top_p ;
 
     //默认值false，是否流式输出内容
     private boolean stream;
@@ -49,6 +55,4 @@ public class CompletionsRequestModel extends BaseRequestModel {
     private int best_of = 1;
 
     private Map logit_bias = new HashMap();
-
-
 }
